@@ -20,6 +20,6 @@ class TransactionHeaderService {
         return $transactionHeader;
     }
     public function all(){
-        return TransactionHeader::all();
+        return TransactionHeader::where('user', request()->session()->get('user'))->get();
     }
 }

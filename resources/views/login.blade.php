@@ -9,7 +9,7 @@
             @endisset
             <div class="tab" style="display:block">
                 <p><input placeholder="Username .." name="username"></p>
-                <p><input placeholder="Password..." name="password"></p>
+                <p><input placeholder="Password..." type="password" name="password"></p>
             </div>
             <div style="display: flex;justify-content: center;">
                 <button type="submit" style="border-radius:25%">Login</button>

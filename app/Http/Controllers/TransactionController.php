@@ -52,9 +52,9 @@ class TransactionController extends Controller
     }
     public function print() {
         $transactionHeaders = $this->transactionHeaderService->all();
-        $temp = "";
         foreach($transactionHeaders as $transactionHeader){
             $trxDetail = $this->transactionDetailService->findById($transactionHeader->document_code);
+            $temp = "";
             foreach($trxDetail as $trx){
                 $product = $this->productService->get($trx->product_code);
                 $temp .= "{$product->product_name} x {$trx->quantity}\n";

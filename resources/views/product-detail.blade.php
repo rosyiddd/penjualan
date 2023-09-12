@@ -33,10 +33,10 @@ function buyProduct(productCode){
   .then(res => res.json())
   .then(json => {
     let local = localStorage.getItem('store');
-    if(local != "null"){
+    if(local && local != "null"){
       let localParse = JSON.parse(local);
       let exist = false;
-      localParse != null && localParse.forEach(value=>{
+      localParse.forEach(value=>{
         if(value.product_code == json.product_code){
           value.quantity += 1;
           exist = true;

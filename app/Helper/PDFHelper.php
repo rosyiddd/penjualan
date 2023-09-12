@@ -37,7 +37,7 @@ class PDFHelper{
             $this->fpdf->Cell(40,6, $trx->document_code,1,0);
             $this->fpdf->Cell(20,6, $trx->user,1,0);
             $this->fpdf->Cell(20,6, $trx->total,1,0);
-            $this->fpdf->Cell(20,6, date_format($trx->date,'Y/m/d'),1,0);
+            $this->fpdf->Cell(20,6, date_format($trx->date,'d M Y'),1,0);
             // foreach($trx->trxDetail as $item){
                 $this->fpdf->Cell(60,6, $trx->trxDetail,1,1);
             // }

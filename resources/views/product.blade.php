@@ -88,7 +88,7 @@ function checkoutPage(){
     let div = document.getElementById('checkout');
     let localParse = JSON.parse(local);
     let html = "";
-    localParse != "null" && localParse.forEach(element => {
+    localParse && localParse != "null" && localParse.forEach(element => {
       html += `<div style="display:flex;margin-bottom:6px">
               <div style="flex:1;">
                   <div style="width:70px;height:70px;background-color:aqua"></div>
@@ -131,7 +131,14 @@ function nextPrev(n) {
   currentTab = currentTab + n;
   // alert(currentTab);
   if (currentTab == 1 && checkoutPage());
+  if (currentTab == 1){
+    let local = localStorage.getItem('store');
+    let localParse = JSON.parse(local);
+    if(!localParse || localParse == "null") document.getElementById("nextBtn").style.display = "none";
+  }
   if (currentTab == 2 && transaction());
+  if (currentTab == 2)  document.getElementById("nextBtn").style.display = "none";
+  if (currentTab == 0)  document.getElementById("nextBtn").style.display = "inline";
   if (currentTab >= x.length) {
     document.getElementById("regForm").submit();
     return false;
@@ -152,10 +159,10 @@ function buyProduct(productCode){
   .then(res => res.json())
   .then(json => {
     let local = localStorage.getItem('store');
-    if(local != "null"){
+    if(local && local != "null"){
       let localParse = JSON.parse(local);
       let exist = false;
-      localParse != null && localParse.forEach(value=>{
+      localParse.forEach(value=>{
         if(value.product_code == json.product_code){
           value.quantity += 1;
           exist = true;
